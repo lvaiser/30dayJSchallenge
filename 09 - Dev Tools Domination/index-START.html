@@ -18,28 +18,73 @@
     }
 
     // Regular
+    console.log('hola mundo');
 
     // Interpolated
+    console.log('me gustan los %s', '🎮');
 
     // Styled
+    console.log('%c RE LOCO', 'font-size: 30px; background: red; font-family: "Times New Roman"');
 
     // warning!
+    console.warn('Guarda!');
 
     // Error :|
+    console.error('💩');
 
     // Info
+    console.info('Esto está hecho por alguien que está aprendiendo');
 
     // Testing
+    console.assert(true === false, 'Objection!');
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+
+    console.log(p);
+    console.dir(p);
+
+    console.clear();
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`)
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count('javascript');
+    console.count('javascript');
+    console.count('javascript');
+    console.count('domingo');
+    console.count('javascript');
+    console.count('javascript');
+    console.count('domingo');
+    console.count('javascript');
+    console.count('domingo');
+    console.count('domingo');
 
     // timing
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    console.time('sleeping');
+    
+    sleep(1000)
+      .then(x => {
+        console.timeEnd('sleeping');
+        console.log(x);
+      });
+
+    // table
+    console.table(dogs);
 
   </script>
 </body>
