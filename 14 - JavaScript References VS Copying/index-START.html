@@ -8,15 +8,37 @@
 
   <script>
     // start with strings, numbers and booleans
-
+    let name = 'leandro';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'rodrigo';
+    console.log(name, name2);
+    
+    let age = '31';
+    let age2 = age;
+    console.log(age, age2);
+    age = '32';
+    console.log(age, age2);
+    
+    let soyIntelectual = false;
+    let soyInteligente = soyIntelectual;
+    console.log(soyIntelectual, soyInteligente);
+    soyIntelectual = true;
+    console.log(soyIntelectual, soyInteligente);
+    
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
+
+    console.log(players, team);
 
     // You might think we can just do something like this:
+    team[3] = 'Lux';
 
     // however what happens when we update that array?
+    console.log(players, team);
 
     // now here is the problem!
 
@@ -25,14 +47,20 @@
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
+    const team5 = Array.from(players);
 
     // one way
+    const team2 = players.slice();
 
     // or create a new array and concat the old one in
+    const team3 = [].concat(players);
 
     // or use the new ES6 Spread
+    const team4 = [...players];
 
     // now when we update it, the original one isn't changed
+    team2[3] = 'Lux'
+    console.log(players, team2);
 
     // The same thing goes for objects, let's say we have a person object
 
@@ -43,13 +71,43 @@
     };
 
     // and think we make a copy:
+    // const captain = person;
+    // captain.age = 99;
 
     // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { age: 99 });
+    console.log(person);
+    console.log(cap2);
 
     // We will hopefully soon see the object ...spread
+    const cap3 = {...person};
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 
+    const spiderman = {
+      name: 'Peter',
+      age: 14,
+      powers: {
+        throw: 'web',
+        climb: 'walls' 
+      }
+    }
+
+    console.log(spiderman.powers.climb);
+
+    const ultimate = Object.assign({}, spiderman);
+    ultimate.name = 'Miles';
+    ultimate.powers.climb = 'buildings';
+
+    console.log(ultimate);
+    console.log(spiderman.powers.climb);
+
+    const clone = JSON.parse(JSON.stringify(spiderman));
+    clone.name = 'Ben';
+    clone.powers.climb = 'towers';
+
+    console.log(clone);
+    console.log(spiderman.powers.climb);
   </script>
 
 </body>
