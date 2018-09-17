@@ -44,8 +44,22 @@
   <ul id="bands"></ul>
 
 <script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+  const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+  function removeArticle(band) {
+      return band.replace(/^(a |the |an )/i, '');
+  };
+
+  const sortedBands = bands.sort((bandA, bandB) => (removeArticle(bandA) > removeArticle(bandB)) ? 1 : -1);
+
+  function createList(listItems) {
+    return listItems
+      .map(element => `<li>${element}</li>`)
+      .join('');
+  }
+
+  const bandsList = document.querySelector('#bands');
+  bandsList.innerHTML = createList(sortedBands);
 
 </script>
 
